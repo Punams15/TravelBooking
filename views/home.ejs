@@ -1,0 +1,76 @@
+<!-- views/home.ejs -->
+<!-- views/home.ejs -->
+<%- include("partials/head.ejs") %>
+ <!--<%- include("partials/header.ejs") %>  <!-- navbar -->
+
+<!-- Cover Page Image with Hero Text -->
+<div class="cover-container">
+  <img src="/images/cover.webp" alt="Cover Image" class="cover-image" />
+  <div class="cover-text">
+    <h1>Welcome to Globetrek!</h1>
+    <p>Explore amazing destinations and book your stay.</p>
+  </div>
+</div>
+
+<!-- Home Page Images Section -->
+<section class="home-images">
+
+  <!-- First Large Image -->
+  <div class="image-block">
+    <img src="/images/coll.webp" alt="College Travel">
+  </div>
+
+  <!-- Side by Side Images -->
+  <div class="image-row">
+    <img src="/images/tcy.webp" alt="Travel City">
+    <img src="/images/tc.webp" alt="Travel Culture">
+  </div>
+
+  <!-- Bottom Large Image -->
+  <div class="image-block">
+    <img src="/images/all.webp" alt="All Destinations">
+  </div>
+
+</section>
+
+<!-- Optional content below -->
+<div class="main-content">
+  <!-- Inquiry Form Section -->
+  <section class="inquiry-section" 
+  style="margin-top:40px; padding:20px; text-align:center; display:flex; flex-direction:column; align-items:center;">
+
+  <h2>Send Us an Inquiry</h2>
+
+  <% if (success && success.length) { %>
+    <div class="alert alert-success" style="max-width:400px; width:100%; text-align:center;">
+      <%= success %>
+    </div>
+  <% } %>
+
+  <% if (error && error.length) { %>
+    <div class="alert alert-danger" style="max-width:400px; width:100%; text-align:center;">
+      <%= error %>
+    </div>
+  <% } %>
+
+  <form action="/inquiry/submit" method="POST" class="inquiry-form" 
+    style="max-width:400px; width:100%; text-align:left;">
+
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+    <label>Your Name</label>
+    <input type="text" name="name" required>
+
+    <label>Your Email</label>
+    <input type="email" name="email" required>
+
+    <label>Your Message</label>
+    <textarea name="message" rows="4" required></textarea>
+
+    <button type="submit">Send Inquiry</button>
+  </form>
+</section>
+
+</div>
+
+ <!--<%- include("partials/footer.ejs") %>  <!-- footer -->

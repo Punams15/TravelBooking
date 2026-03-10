@@ -1,0 +1,13 @@
+<h2>Reset Password</h2>
+
+<form action="/auth/reset/<%= token %>" method="POST">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+  <input type="password" name="password" placeholder="New Password" required>
+  <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+  
+  <button type="submit">Update Password</button>
+</form>
+
+
+

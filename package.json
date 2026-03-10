@@ -1,0 +1,45 @@
+{
+  "name": "globetrek",
+  "version": "1.0.0",
+  "description": "Server-side rendered globetrek app with EJS",
+  "homepage": "https://github.com/Punams15/globes#readme",
+  "bugs": {
+    "url": "https://github.com/Punams15/globes/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Punams15/globes.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "csurf": "^1.11.0",
+    "dotenv": "^17.3.1",
+    "ejs": "^4.0.1",
+    "express": "^4.22.1",
+    "express-async-errors": "^3.1.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-rate-limit": "^8.2.1",
+    "express-session": "^1.19.0",
+    "helmet": "^8.1.0",
+    "mongoose": "^9.2.2",
+    "nodemailer": "^8.0.1",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "xss-clean": "^0.1.4"
+  }
+}

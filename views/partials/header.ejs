@@ -1,0 +1,27 @@
+<header class="simple-header">
+  <div class="logo-placeholder">
+    <img src="/images/logo.webp" alt="Globetrek Logo" />
+  </div>
+
+  <nav>
+    <ul style="display:flex; list-style:none; gap:15px; align-items:center;">
+      <li><a href="/">Home</a></li>
+
+      <% if (!user) { %>
+        <li><a href="/auth/login">Login</a></li>
+        <li><a href="/auth/register">Register</a></li>
+      <% } else { %>
+        <li><a href="/bookings">My Bookings</a></li>
+        <li><a href="/bookings/new">New Booking</a></li>
+
+        <li>
+          Hello, <%= user.name %> |
+          <form action="/auth/logout" method="POST" style="display:inline;">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button type="submit">Logout</button>
+          </form>
+        </li>
+      <% } %>
+    </ul>
+  </nav>
+</header>

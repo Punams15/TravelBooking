@@ -1,0 +1,211 @@
+
+<%- include('../partials/header') %>
+
+<div class="bookings-header">
+  <h1>My Bookings</h1>
+
+  <!-- Flash messages -->
+  <% if (success && success.length) { %>
+    <div class="alert alert-success"><%= success %></div>
+  <% } %>
+
+  <% if (error && error.length) { %>
+    <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+
+  <a href="/bookings/new">
+    <button type="button">New Booking</button>
+  </a>
+</div>
+
+
+<!-- SORT + FILTER BAR -->
+<form method="GET" action="/bookings" class="filter-bar" style="margin-bottom:15px;">
+  
+  <label>Sort:</label>
+  <select name="sort">
+    <option value="newest" <%= sort === "newest" ? "selected" : "" %>>Newest</option>
+    <option value="oldest" <%= sort === "oldest" ? "selected" : "" %>>Oldest</option>
+    <option value="alpha" <%= sort === "alpha" ? "selected" : "" %>>A → Z</option>
+    <option value="alpha-desc" <%= sort === "alpha-desc" ? "selected" : "" %>>Z → A</option>
+  </select>
+
+  <label>Status:</label>
+  <select name="status">
+    <option value="all" <%= status === "all" ? "selected" : "" %>>All</option>
+    <option value="pending" <%= status === "pending" ? "selected" : "" %>>Pending</option>
+    <option value="done" <%= status === "done" ? "selected" : "" %>>Done</option>
+    <option value="canceled" <%= status === "canceled" ? "selected" : "" %>>Canceled</option>
+  </select>
+
+  <button type="submit">Apply</button>
+
+</form>
+
+<!-- PAGINATION (TOP) -->
+<div class="pagination">
+
+  <% if (currentPage > 1) { %>
+    <a class="page-btn"
+       href="/bookings?page=<%= currentPage - 1 %>&sort=<%= sort %>&status=<%= status %>">
+       ← Prev
+    </a>
+  <% } %>
+
+  <span class="page-info">
+    Page <%= currentPage %> of <%= totalPages %>
+  </span>
+
+  <% if (currentPage < totalPages) { %>
+    <a class="page-btn"
+       href="/bookings?page=<%= currentPage + 1 %>&sort=<%= sort %>&status=<%= status %>">
+       Next →
+    </a>
+  <% } %>
+
+</div>
+
+<table border="1" cellpadding="8" cellspacing="0">
+
+  <thead>
+    <tr>
+      <th>Hotel</th>
+      <th>Location</th>
+      <th>Check-In</th>
+      <th>Check-Out</th>
+      <th>Guests</th>
+      <th>Price</th>
+      <th>Notes</th>
+      <th>Status</th>  <!-- Editable column -->
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+
+  <% if (bookings.length) { %>
+
+    <% bookings.forEach((booking) => { %>
+
+      <tr>
+
+        <td><%= booking.hotelName %></td>
+
+        <td><%= booking.location %></td>
+
+        <td><%= booking.checkInDate.toLocaleDateString() %></td>
+
+        <td><%= booking.checkOutDate.toLocaleDateString() %></td>
+
+        <td><%= booking.guests %></td>
+
+        <td>$<%= booking.price.toFixed(2) %></td>
+
+        <td><%= booking.notes || '-' %></td>
+
+
+        <!-- INLINE STATUS UPDATE WITH EXPLICIT SAVE BUTTON -->
+        <td>
+
+          <form action="/bookings/update-status/<%= booking._id %>" 
+                method="POST" 
+                style="display:flex; gap:4px; align-items:center;">
+
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+            <select name="status">
+              <option value="pending" <%= booking.status === 'pending' ? 'selected' : '' %>>Pending</option>
+              <option value="done" <%= booking.status === 'done' ? 'selected' : '' %>>Done</option>
+              <option value="canceled" <%= booking.status === 'canceled' ? 'selected' : '' %>>Canceled</option>
+            </select>
+
+            <button type="submit">Save</button>
+
+          </form>
+
+        </td>
+
+
+        <!-- EDIT -->
+        <td class="actions">
+
+          <a href="/bookings/edit/<%= booking._id %>">
+            <button type="button">Edit</button>
+          </a>
+
+        </td>
+
+
+        <!-- DELETE -->
+        <td>
+
+          <form action="/bookings/delete/<%= booking._id %>" 
+                method="POST" 
+                style="display:inline;">
+
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+            <button type="submit">Delete</button>
+
+          </form>
+
+        </td>
+
+
+      </tr>
+
+    <% }) %>
+
+
+  <% } else { %>
+
+    <tr>
+      <td colspan="10">No bookings yet.</td>
+    </tr>
+
+  <% } %>
+
+  </tbody>
+
+</table>
+
+
+
+<!-- PAGINATION (BOTTOM)-->
+<div class="pagination">
+
+  <% if (currentPage > 1) { %>
+
+    <a class="page-btn"
+       href="/bookings?page=<%= currentPage - 1 %>&sort=<%= sort %>&status=<%= status %>">
+
+       ← Prev
+
+    </a>
+
+  <% } %>
+
+
+  <span class="page-info">
+    Page <%= currentPage %> of <%= totalPages %>
+  </span>
+
+
+  <% if (currentPage < totalPages) { %>
+
+    <a class="page-btn"
+       href="/bookings?page=<%= currentPage + 1 %>&sort=<%= sort %>&status=<%= status %>">
+
+       Next →
+
+    </a>
+
+  <% } %>
+
+</div>
+
+
+
+<%- include('../partials/footer') %>
+

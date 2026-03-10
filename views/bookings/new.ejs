@@ -1,0 +1,53 @@
+<%- include('../partials/header') %>
+
+<div class="new-booking-container">
+
+<h1><%= booking ? 'Edit Booking' : 'New Booking' %></h1>
+
+<!-- Flash messages -->
+<% if (success && success.length) { %>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+<% if (error && error.length) { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+
+</div>
+
+<form action="<%= booking ? '/bookings/edit/' + booking._id : '/bookings/new' %>" method="POST">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+  <label>Hotel Name:</label>
+  <input type="text" name="hotelName" value="<%= booking ? booking.hotelName : '' %>" required><br>
+
+  <label>Location:</label>
+  <input type="text" name="location" value="<%= booking ? booking.location : '' %>" required><br>
+
+  <label>Check-In Date:</label>
+  <input type="date" name="checkInDate" value="<%= booking ? booking.checkInDate.toISOString().split('T')[0] : '' %>" required><br>
+
+  <label>Check-Out Date:</label>
+  <input type="date" name="checkOutDate" value="<%= booking ? booking.checkOutDate.toISOString().split('T')[0] : '' %>" required><br>
+
+  <label>Guests:</label>
+  <input type="number" name="guests" min="1" max="20" value="<%= booking ? booking.guests : 1 %>" required><br>
+
+  <label>Price:</label>
+  <input type="number" name="price" min="1" value="<%= booking ? booking.price : 1 %>" required><br>
+
+  <label>Notes:</label>
+  <textarea name="notes" maxlength="300"><%= booking ? booking.notes : '' %></textarea><br>
+
+  <!-- STATUS DROPDOWN (New + Edit) -->
+  <label>Status:</label>
+  <select name="status">
+    <option value="pending" <%= booking && booking.status === "pending" ? "selected" : "" %>>Pending</option>
+    <option value="done" <%= booking && booking.status === "done" ? "selected" : "" %>>Done</option>
+    <option value="canceled" <%= booking && booking.status === "canceled" ? "selected" : "" %>>Canceled</option>
+  </select><br>
+
+  <button type="submit"><%= booking ? 'Update Booking' : 'Create Booking' %></button>
+  <a href="/bookings"><button type="button">Cancel</button></a>
+</form>
+
+<%- include('../partials/footer') %>

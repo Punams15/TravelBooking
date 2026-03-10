@@ -1,0 +1,34 @@
+<%- include("../partials/head.ejs") %>
+<%- include("../partials/header.ejs") %>
+
+<h1>My Bookings</h1>
+
+<% if (success && success.length > 0) { %>
+  <% success.forEach(msg => { %>
+    <div style="color:green;"><%= msg %></div>
+  <% }) %>
+<% } %>
+
+<% if (error && error.length > 0) { %>
+  <% error.forEach(msg => { %>
+    <div style="color:red;"><%= msg %></div>
+  <% }) %>
+<% } %>
+
+<% if (bookings && bookings.length > 0) { %>
+  <ul>
+    <% bookings.forEach(booking => { %>
+      <li>
+        <strong><%= booking.hotelName %></strong> in <%= booking.location %> | 
+        Check-in: <%= booking.checkInDate.toDateString() %> | 
+        Check-out: <%= booking.checkOutDate.toDateString() %>
+      </li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p>You have no bookings yet.</p>
+<% } %>
+
+<a href="/bookings/new">Create New Booking</a>
+
+<%- include("../partials/footer.ejs") %>

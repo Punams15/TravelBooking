@@ -1,0 +1,721 @@
+html, body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header nav {
+  display: flex;
+  background: #333;
+  background: #f5c6cb;
+   background: rgb(199, 141, 33);
+  padding: 10px;
+}
+
+header nav a {
+  color: #fff;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #333;
+  color: #fff;
+  margin-top: 20px;
+}
+
+form {
+  margin: 20px 0;
+}
+
+input, button {
+  display: block;
+  margin: 5px 0;
+}
+
+.logo-placeholder img {
+  width: 50px;        /* smaller width */
+  height: 50px;       /* same as width for circle */
+  border-radius: 50%; /* makes it circular */
+  object-fit: cover;  /* ensures the image fits nicely inside the circle */
+}
+
+
+
+/* Flash messages */
+.messages {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.flash {
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.flash.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.flash.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.flash.info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+
+
+/*new*/
+
+/*Login / Register forms */
+
+form {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  /*background: #f9f9f9;*/
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background: #333;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background: #555;
+}
+
+form .link {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+form .link a {
+  color: #333;
+  text-decoration: none;
+}
+
+form .link a:hover {
+  text-decoration: underline;
+}
+
+/*again white-bar----This worked*/
+
+nav form {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+nav form button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  color: yellowgreen;
+   color: aqua;
+}
+
+nav form button:hover {
+  text-decoration: underline;
+  color: yellow;
+}
+
+
+
+
+/* white-bar*/
+
+.simple-header {
+  background: #333;
+  padding: 0;
+  margin: 0;
+  background: rgb(199, 141, 33);
+  background: rgb(70, 24, 155);
+  
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+
+}
+
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cover container */
+.cover-container {
+  position: relative;      /* needed for overlay text */
+  width: 100%;
+  height: 140vh;            /* adjust height as needed */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cover image */
+
+.cover-container .cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* cover entire container */
+    object-position: top;  /* <-- added to show top part */
+  display: block;
+ 
+}
+
+.cover-container {
+  padding-top: 10px;          /* adjust to your navbar height */
+  height: calc(100vh - 60px); /* fill the rest of the viewport */
+}
+
+.cover-container {
+  width: 100%;
+  height: 100vh;       /* full viewport height */
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top; /* show top of image */
+  display: block;
+}
+/* Overlay text on cover */
+.cover-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;            /* text color */
+  text-align: center;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7); /* optional for readability */
+}
+
+.cover-text h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.cover-text p {
+  font-size: 1.5rem;
+}
+
+
+/* Normal nav links */
+.simple-header nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+   
+}
+
+
+/*Bookings add form*/
+
+/* Center the table on page */
+table {
+  width: 90%;           /* Make table narrower than page */
+  margin: 20px auto;    /* Center table horizontally */
+  border-collapse: collapse; /* Remove double borders */
+}
+
+/* Table styling */
+table, th, td {
+  border: 1px solid #000; /* Add border for visibility */
+}
+
+/* Padding inside cells */
+th, td {
+  padding: 8px 12px;
+  text-align: center;    /* Center content in cells */
+  vertical-align: middle;
+}
+
+/* Buttons in actions column */
+.actions button {
+  display: inline-block;
+  margin: 2px;
+  padding: 5px 10px;
+}
+
+/* Prevent overflow in table */
+table td, table th {
+  word-wrap: break-word;
+  max-width: 150px; /* optional: limit column width */
+}
+
+/* Optional: alternate row colors */
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+
+.actions button {
+  white-space: nowrap;
+}
+
+
+
+/* Home Page Image Section */
+.home-images {
+  width: 100%;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+/* Big centered images */
+.image-block {
+  margin: 60px auto;
+}
+
+.image-block img {
+  width: 80%;
+  max-width: 1100px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+/* Side by side images */
+.image-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 60px auto;
+  flex-wrap: wrap;
+}
+
+.image-row img {
+  width: 40%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.image-row img {
+  width: 40%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;   /* prevents distortion */
+}
+
+
+/*My bookings and edit content at center */
+
+.bookings-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centers horizontally */
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+  text-align: center;
+  margin: 20px auto;
+  width: 100%;
+}
+
+/* New Booking at the center */
+.new-booking-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centers title + form */
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+
+/*Orange bar*/
+
+
+.simple-header nav ul {
+  display: flex;
+  justify-content: center;   /* centers all nav items */
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.logo-placeholder img {
+  display: block;
+  margin: 0 auto;           /* ensures perfect centering */
+}
+
+
+.footer-name {
+  font-weight: bold;
+  color: #D4AF37; /* gold */
+}
+
+
+
+/*⭐⭐⭐ ADD YOUR TOGGLE RIGHT HERE ⭐⭐⭐ */
+
+.theme-toggle-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+
+    position: sticky;
+    top: 60px; /* sits right below your sticky navbar */
+    z-index: 998;
+    background-color: inherit;
+    padding: 10px 20px;
+}
+
+/* Switch container */
+.theme-switch {
+    position: relative;
+    width: 70px;
+    height: 34px;
+    display: inline-block;
+}
+
+/* Hide checkbox */
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Slider background */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #87CEFA, #1E90FF); /* day sky */
+    border-radius: 34px;
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+    font-size: 18px;
+}
+
+/* Sun & Moon icons */
+.slider .sun {
+    color: #FFD700;
+}
+
+.slider .moon {
+    color: #ffffff;
+}
+
+/* Slider knob */
+.slider:before {
+    content: "";
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+/* When checked (dark mode) */
+input:checked + .slider {
+    background: linear-gradient(to right, #001f3f, #001233); /* night sky */
+}
+
+input:checked + .slider:before {
+    transform: translateX(36px);
+}
+
+/* Light Mode */
+.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: #0d1b2a;
+    color: #ffffff;
+}
+
+/* DARK MODE NAVBAR */
+.dark-mode .simple-header {
+    background-color: #000000 !important;
+    border-bottom: 1px solid #333;
+}
+
+.dark-mode .header-inner {
+    background-color: #000000 !important;
+}
+
+.dark-mode .simple-header nav ul li a {
+    color: #ffffff !important;
+}
+
+.dark-mode .simple-header nav ul li a:hover {
+    color: #FFD700 !important; /* optional golden hover */
+}
+
+/* DARK MODE: Turn orange navbar background to black */
+.dark-mode .simple-header,
+.dark-mode .header-inner,
+.dark-mode nav,
+.dark-mode nav ul,
+.dark-mode nav ul li,
+.dark-mode nav ul li a {
+    background-color: #000000 !important;
+}
+
+/* DARK MODE — Booking Table */
+.dark-mode table {
+    background-color: #0f1a2b !important; /* deep navy */
+    color: #ffffff !important;
+    border-color: #2a3b55 !important;
+}
+
+.dark-mode table th {
+    background-color: #152238 !important;
+    color: #ffffff !important;
+    border-color: #2a3b55 !important;
+}
+
+.dark-mode table td {
+    background-color: #0f1a2b !important;
+    color: #ffffff !important;
+    border-color: #2a3b55 !important;
+}
+
+/* Dropdowns inside table */
+.dark-mode select {
+    background-color: #152238 !important;
+    color: #ffffff !important;
+    border: 1px solid #2a3b55 !important;
+}
+
+/* Buttons inside table */
+.dark-mode button {
+    background-color: #1e2d47 !important;
+    color: #ffffff !important;
+    border: 1px solid #2a3b55 !important;
+}
+
+.dark-mode button:hover {
+    background-color: #2a3b55 !important;
+}
+
+/* Notes text area if any */
+.dark-mode textarea {
+    background-color: #152238 !important;
+    color: #ffffff !important;
+    border: 1px solid #2a3b55 !important;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.page-btn {
+    padding: 8px 14px;
+    background: #6a0dad;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.page-btn:hover {
+    background: #4b087a;
+}
+
+.page-info {
+    font-weight: bold;
+}
+
+/* Dark mode pagination */
+.dark-mode .page-btn {
+    background: #1e2d47;
+    color: #ffffff;
+}
+
+.dark-mode .page-btn:hover {
+    background: #2a3b55;
+}
+
+.dark-mode .page-info {
+    color: #ffffff;
+}
+
+/* Dark Mode — Make inquiry form fields white */
+.dark-mode input,
+.dark-mode textarea {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #ccc !important;
+}
+
+/* Optional: placeholder color for dark mode */
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+    color: #555 !important;
+}
+
+
+/* UNIVERSAL RESPONSIVE FIX */
+@media (max-width: 768px) {
+
+    /* Stack navbar items */
+    .simple-header .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .simple-header nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .simple-header nav ul li a {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+
+    /* Make tables scrollable */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Reduce padding for containers */
+    .container {
+        padding: 10px;
+    }
+
+    /* Buttons full width on small screens */
+    button, .btn {
+        width: 100%;
+    }
+
+    /* Inputs full width */
+    input, select, textarea {
+        width: 100%;
+    }
+}
+
+
+/*To make both logo at the center*/
+/*.simple-header {
+  display: flex;
+  flex-direction: column;   /* stack logo above nav */
+  /*align-items: center;      /* center the logo */
+  /*justify-content: center;
+  padding: 10px 0;
+}
+
+
+
+/*to center both orange bar at center with logos*/
+
+/*.simple-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;        /* centers logo + nav */
+  /*justify-content: center;
+  padding: 10px 0;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

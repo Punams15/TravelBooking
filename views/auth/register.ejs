@@ -1,0 +1,12 @@
+<form action="/auth/register" method="POST">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <label>Name:</label>
+  <input type="text" name="name" required>
+  <label>Email:</label>
+  <input type="email" name="email" required>
+  <label>Password:</label>
+  <input type="password" name="password" required>
+  <label>Confirm Password:</label>
+  <input type="password" name="password2" required>
+  <button type="submit">Register</button>
+</form>

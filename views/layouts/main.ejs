@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Globetrek</title>
+
+  <link rel="icon" type="image/x-icon" href="images/favicon.webp">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <!-- HEADER (Sticky Navbar) -->
+  <header class="simple-header">
+    <div class="header-inner">
+      <div class="logo-placeholder">
+        <img src="/images/logo.webp" alt="Globetrek Logo" />
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+
+          <% if (!user) { %>
+            <li><a href="/auth/login">Login</a></li>
+            <li><a href="/auth/register">Register</a></li>
+          <% } else { %>
+            <li><a href="/bookings">My Bookings</a></li>
+            <li><a href="/bookings/new">New Booking</a></li>
+            <li>
+              <form action="/auth/logout" method="POST" style="display:inline;">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit">Logout</button>
+              </form>
+            </li>
+          <% } %>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ⭐⭐⭐ STICKY THEME TOGGLE (Works on ALL pages) ⭐⭐⭐ -->
+  <div class="theme-toggle-wrapper">
+    <label class="theme-switch">
+      <input type="checkbox" id="themeCheckbox">
+      <span class="slider">
+        <span class="sun">☀️</span>
+        <span class="moon">🌙</span>
+      </span>
+    </label>
+  </div>
+  <!-- ⭐⭐⭐ END TOGGLE ⭐⭐⭐ -->
+
+
+  <!-- FLASH MESSAGES -->
+  <section class="messages">
+    <% if (success && success.length > 0) { %>
+      <div class="flash success"><%= success %></div>
+    <% } %>
+
+    <% if (error && error.length > 0) { %>
+      <div class="flash error"><%= error %></div>
+    <% } %>
+
+    <% if (info && info.length > 0) { %>
+      <div class="flash info"><%= info %></div>
+    <% } %>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <%- body %>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 <span class="footer-name">Poonam Shrestha</span>. All rights reserved.
+  </footer>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

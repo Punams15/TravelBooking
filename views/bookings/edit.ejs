@@ -1,0 +1,49 @@
+<%- include('../partials/header') %>
+
+<h1>Edit Booking</h1>
+
+<!-- Flash messages -->
+<% if (success && success.length) { %>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+<% if (error && error.length) { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+
+<form action="/bookings/edit/<%= booking._id %>" method="POST">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+  <label>Hotel Name:</label>
+  <input type="text" name="hotelName" value="<%= booking.hotelName %>" required><br>
+
+  <label>Location:</label>
+  <input type="text" name="location" value="<%= booking.location %>" required><br>
+
+  <label>Check-In Date:</label>
+  <input type="date" name="checkInDate" value="<%= booking.checkInDate.toISOString().split('T')[0] %>" required><br>
+
+  <label>Check-Out Date:</label>
+  <input type="date" name="checkOutDate" value="<%= booking.checkOutDate.toISOString().split('T')[0] %>" required><br>
+
+  <label>Guests:</label>
+  <input type="number" name="guests" min="1" max="20" value="<%= booking.guests %>" required><br>
+
+  <label>Price:</label>
+  <input type="number" name="price" min="1" value="<%= booking.price %>" required><br>
+
+  <label>Notes:</label>
+  <textarea name="notes" maxlength="300"><%= booking.notes %></textarea><br>
+
+  <!-- STATUS DROPDOWN -->
+  <label>Status:</label>
+  <select name="status">
+    <option value="pending" <%= booking.status === "pending" ? "selected" : "" %>>Pending</option>
+    <option value="done" <%= booking.status === "done" ? "selected" : "" %>>Done</option>
+    <option value="canceled" <%= booking.status === "canceled" ? "selected" : "" %>>Canceled</option>
+  </select><br>
+
+  <button type="submit">Update Booking</button>
+  <a href="/bookings"><button type="button">Cancel</button></a>
+</form>
+
+<%- include('../partials/footer') %>

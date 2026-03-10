@@ -1,0 +1,14 @@
+<form action="/auth/login" method="POST">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+  <label>Email:</label>
+  <input type="email" name="email" required>
+
+  <label>Password:</label>
+  <input type="password" name="password" required>
+
+  <p><a href="/auth/forgot">Forgot Password?</a></p>
+
+  <button type="submit">Login</button>
+</form>
+
