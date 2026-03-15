@@ -1,8 +1,6 @@
-const parseValidationErrors = (e, req) => {
-  const keys = Object.keys(e.errors);
-  keys.forEach((key) => {
-    req.flash("error", key + ": " + e.errors[key].properties.message);
-  });
-};
+// util/parseValidationErr.js
+export function parseValidationErr(err) {
+  if (!err || !err.errors) return ["Unknown validation error"];
 
-module.exports = parseValidationErrors;
+  return Object.values(err.errors).map((e) => e.message || "Validation error");
+}
