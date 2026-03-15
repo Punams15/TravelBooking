@@ -106,6 +106,21 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
 app.set('layout', 'layouts/main'); // default layout
 
+
+/* =====================================================
+   CONTENT-TYPE FIX FOR TESTING
+   ===================================================== */
+/*Removed
+app.use((req, res, next) => {
+  if (req.path === "/multiply") {
+    res.set("Content-Type", "application/json");
+  } else {
+    res.set("Content-Type", "text/html");
+  }
+  next();
+});   till here */
+
+
 // ---------------- ROUTES ----------------
 app.use('/auth', authRoutes);        // login/register/logout
 app.use('/bookings', bookingRoutes); // CRUD for bookings
@@ -123,6 +138,19 @@ app.get('/test-bookings', (req, res) => {
   res.send('Test bookings route works!');
 });
 
+/* =====================================================
+    TESTING ROUTE (ADDED FOR MOCHA / CHAI TESTING)
+   ===================================================== */
+
+app.get('/multiply', (req, res) => {
+  const first = Number(req.query.first);
+  const second = Number(req.query.second);
+  const result = first * second;
+  res.json({ result: result });
+});
+
+
+
 // ---------------- 404 HANDLER ----------------
 app.use((req, res) => {
   res.status(404).send(`Page ${req.url} not found`);
@@ -138,12 +166,34 @@ app.use((err, req, res, next) => {
 });
 
 // ---------------- DATABASE + START SERVER ..DB + Server----------------
-connectDB(process.env.MONGO_URI)
+/* (replaced this block for testing )connectDB(process.env.MONGO_URI)
   .then(() => {
     const port = process.env.PORT || 5000;
     app.listen(port, () => console.log(`Server running on port ${port}`));
   })
+  .catch((err) => console.error(err)); */
+
+
+/* =====================================================
+   TEST DATABASE SWITCHING
+   ===================================================== */
+let mongoURL = process.env.MONGO_URI;
+if (process.env.NODE_ENV === "test") {
+  mongoURL = process.env.MONGO_URI_TEST;
+}
+
+// Connect to DB but DO NOT start server here
+connectDB(mongoURL)
+  .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error(err));
+
+  
+/* =====================================================
+   EXPORT APP FOR TESTING
+   ===================================================== */
+
+   export { app };
+
 
 
   //http://localhost:5000/
